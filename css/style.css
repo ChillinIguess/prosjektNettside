@@ -1,0 +1,14 @@
+
+body{
+    
+    background-color: rgb(235, 143, 23);
+   
+}
+nav {
+    display: flex;
+    justify-content: space-evenly;
+} 
+header{
+        background-color: rgb(255, 255, 255);
+        margin-bottom:0%
+    }
