@@ -6,7 +6,9 @@ function oppdaterAntall() {
 
 const knapper = document.querySelectorAll(".kjopKnapp");
 const container = document.getElementById("produktContainer");
-
+const kurvPopup = document.getElementById("kurvPopup");
+const kurvKnapp = document.getElementById("kurvKnapp");
+const lukkKurv = document.getElementById("lukkKurv");
 for (let produkt of produkter){
     container.innerHTML +=`
     <div class="produktkort">
@@ -15,14 +17,47 @@ for (let produkt of produkter){
     <p>${produkt.beskrivelse}</p>
     <p>${produkt.pris}kr</p>
     <p>På lager: ${produkt.lager}</p>
-    <button class="kjopKnapp" data-id="$(produkt.id)">
+    <button class="kjopKnapp" data-id="${produkt.id}">
     Legg i handlekurv
     </button>
  
    </div>
     `;
 }
+let handlekurv = [];
 
+function visHandlekurv(){
+    
+    const liste = document.getElementById("kurvliste");
+
+   
+    let total = 0;
+    if (handlekurv.length === 0){
+        kurvliste.innerHTML="<p>Tomt</p>";
+        
+    }
+    else {
+    for (let produkt of handlekurv){
+        kurvliste.innerHTML +=`
+        <p>
+        ${produkt.navn}
+        -
+        ${produkt.pris} kr </p>`; 
+        total = total + produkt.pris;
+    }
+   
+    }
+    // for (let produkt of handlekurv){
+    //     total = total + produkt.pris;
+    //     liste.innerHTML +=`
+    //     <p>
+    //     ${produkt.navn} - ${produkt.pris}kr
+    //     </p>
+    //     `;
+    //     document.getElementById("totalPris").textContent = 
+    //     "Totalt: " + total + "kr";
+    // }
+};
 document.querySelectorAll(".kjopKnapp").forEach(knapp =>{
 
     knapp.addEventListener("click", () => {
@@ -32,12 +67,14 @@ document.querySelectorAll(".kjopKnapp").forEach(knapp =>{
               
             
              produkt => produkt.id === id)
-             console.log("Produkt-id", id)
+          
          ;
         handlekurv.push(valgtProdukt);
         oppdaterAntall();
-        console.log(valgtProdukt);
+        console.log("Du valgte:", valgtProdukt.navn+"!");
+        console.log(valgtProdukt.pris);
         
+           console.log("Produkt-id", valgtProdukt.id)
 
 
         console.log("Knappen ble trykket");
@@ -48,3 +85,16 @@ function oppdaterAntall(){
     document.getElementById("antallKurv").textContent =
     handlekurv.length;
 }
+kurvKnapp.addEventListener("click", () => {
+
+    visHandlekurv();
+
+    kurvPopup.style.display = "flex";
+
+});
+lukkKurv.addEventListener("click", () => {
+    kurvPopup.style.display = "none";
+});
+
+
+

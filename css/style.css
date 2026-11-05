@@ -45,3 +45,20 @@ img {
     border-radius: 20px;
     width: 15%;
 }
+.popup{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0.7);
+    justify-content: center
+    ;
+    align-items: center;
+}
+.kurvinnhold{
+    background-color: white;
+    padding: 25px;
+    width: 400px;
+    max-width: 90%;
+    border-radius: 10px;
+
+}

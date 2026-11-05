@@ -1,4 +1,4 @@
-let handlekurv = [];
+
 
 
 const produkter = [
@@ -31,6 +31,5 @@ const produkter = [
              lager: 6 }
 ];
 
-handlekurv.push(produkter[2]);
-console.log(handlekurv)
+
 
