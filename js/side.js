@@ -29,7 +29,7 @@ document.querySelectorAll(".kjopKnapp").forEach(knapp =>{
 
         let id = Number(knapp.dataset.id);
          let valgtProdukt = produkter.find(
-            
+              
             
              produkt => produkt.id === id)
              console.log("Produkt-id", id)
