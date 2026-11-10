@@ -33,12 +33,12 @@ function visHandlekurv(){
    
     let total = 0;
     if (handlekurv.length === 0){
-        kurvliste.innerHTML="<p>Tomt</p>";
+       liste.innerHTML="<p>Tomt</p>";
         
     }
     else {
     for (let produkt of handlekurv){
-        kurvliste.innerHTML +=`
+        liste.innerHTML +=`
         <p>
         ${produkt.navn}
         -
@@ -46,7 +46,9 @@ function visHandlekurv(){
         total = total + produkt.pris;
     }
    
-    }
+    
+   
+    } console.log(total);
     // for (let produkt of handlekurv){
     //     total = total + produkt.pris;
     //     liste.innerHTML +=`
@@ -80,7 +82,11 @@ document.querySelectorAll(".kjopKnapp").forEach(knapp =>{
         console.log("Knappen ble trykket");
     });
     });
-
+kurvPopup.addEventListener("click", (event) => {
+    if (event.target === kurvPopup){
+        kurvPopup.style.display = "none"
+    }
+});
 function oppdaterAntall(){
     document.getElementById("antallKurv").textContent =
     handlekurv.length;
