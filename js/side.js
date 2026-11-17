@@ -1,18 +1,18 @@
+const knapper = document.querySelectorAll(".kjopKnapp");
+const container = document.getElementById("produktContainer");
+const kurvPopup = document.getElementById("kurvPopup");
+const kurvKnapp = document.getElementById("kurvKnapp");
+const lukkKurv = document.getElementById("lukkKurv");
 
 function oppdaterAntall() {
     document.getElementById("antallKurv").textContent =
     handlekurv.length;
 }
 
-const knapper = document.querySelectorAll(".kjopKnapp");
-const container = document.getElementById("produktContainer");
-const kurvPopup = document.getElementById("kurvPopup");
-const kurvKnapp = document.getElementById("kurvKnapp");
-const lukkKurv = document.getElementById("lukkKurv");
 for (let produkt of produkter){
     container.innerHTML +=`
     <div class="produktkort">
-    img src="${produkt.bilde}" alt="${produkt.navn}">
+    img src= "${produkt.bilde}" alt="${produkt.navn}">
     <h2>${produkt.navn}</h2>
     <p>${produkt.beskrivelse}</p>
     <p>${produkt.pris}kr</p>
@@ -23,7 +23,7 @@ for (let produkt of produkter){
  
    </div>
     `;
-}
+};
 let handlekurv = [];
 
 function visHandlekurv(){
@@ -44,21 +44,10 @@ function visHandlekurv(){
         -
         ${produkt.pris} kr </p>`; 
         total = total + produkt.pris;
-    }
-   
-    
-   
-    } console.log(total);
-    // for (let produkt of handlekurv){
-    //     total = total + produkt.pris;
-    //     liste.innerHTML +=`
-    //     <p>
-    //     ${produkt.navn} - ${produkt.pris}kr
-    //     </p>
-    //     `;
-    //     document.getElementById("totalPris").textContent = 
-    //     "Totalt: " + total + "kr";
-    // }
+    }};
+
+    console.log(total);
+  
 };
 document.querySelectorAll(".kjopKnapp").forEach(knapp =>{
 
@@ -68,15 +57,13 @@ document.querySelectorAll(".kjopKnapp").forEach(knapp =>{
          let valgtProdukt = produkter.find(
               
             
-             produkt => produkt.id === id)
-          
-         ;
+             produkt => produkt.id === id);
         handlekurv.push(valgtProdukt);
         oppdaterAntall();
         console.log("Du valgte:", valgtProdukt.navn+"!");
         console.log(valgtProdukt.pris);
         
-           console.log("Produkt-id", valgtProdukt.id)
+           console.log("Produkt-id", valgtProdukt.id);
 
 
         console.log("Knappen ble trykket");
@@ -84,7 +71,7 @@ document.querySelectorAll(".kjopKnapp").forEach(knapp =>{
     });
 kurvPopup.addEventListener("click", (event) => {
     if (event.target === kurvPopup){
-        kurvPopup.style.display = "none"
+        kurvPopup.style.display = "none";
     }
 });
 function oppdaterAntall(){
