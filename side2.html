@@ -10,20 +10,38 @@
 
 <body>
     <header>
-        <h1>Nettside</h1>
+        <h1>Side 2</h1>
         <nav class="navbar">
-
+            <button id="kurvKnapp">
+                Handlekurv (<span id="antallKurv">0</span>)
+            </button>
             <a class="navbutton" href="index.html">Første side</a>
-            <a class="navbutton" href="">Side 2</a>
+            <a class="navbutton">Side 2</a>
             <a class="navbutton" href="side3.html">Om oss</a>
         </nav>
     </header>
     <main>
-
+        <p>Produkter </p>
+        <div id="produktContainer"></div>
+       
     </main>
     <footer>
 
     </footer>
+    
+
+    <div id="kurvPopup" class="popup">
+        <div class="kurvinnhold">
+            <button id="lukkKurv">X</button>
+        <h2>Handlekurv</h2>
+        <div id="kurvListe"></div>
+        <p id="totalPris"></p>
+      
+        
+    </div>
+    </div>
+    <script src="js/produkter.js"></script>
+    <script src="js/side.js"></script>
 </body>
 
 </html>

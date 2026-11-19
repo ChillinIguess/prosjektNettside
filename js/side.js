@@ -12,7 +12,7 @@ function oppdaterAntall() {
 for (let produkt of produkter){
     container.innerHTML +=`
     <div class="produktkort">
-    img src= "${produkt.bilde}" alt="${produkt.navn}">
+    <img src= "${produkt.bilde}" alt="${produkt.navn}">
     <h2>${produkt.navn}</h2>
     <p>${produkt.beskrivelse}</p>
     <p>${produkt.pris}kr</p>
@@ -24,15 +24,15 @@ for (let produkt of produkter){
    </div>
     `;
 };
-let handlekurv = [];
 
+let total = 0;
 function visHandlekurv(){
     
     const liste = document.getElementById("kurvliste");
 
    
-    let total = 0;
-    if (handlekurv.length === 0){
+    
+    if (handlekurv.length = 0){
        liste.innerHTML="<p>Tomt</p>";
         
     }
@@ -40,8 +40,8 @@ function visHandlekurv(){
     for (let produkt of handlekurv){
         liste.innerHTML +=`
         <p>
-        ${produkt.navn}
-        -
+        ${produkt.navn},
+        -,
         ${produkt.pris} kr </p>`; 
         total = total + produkt.pris;
     }};
@@ -89,5 +89,5 @@ lukkKurv.addEventListener("click", () => {
     kurvPopup.style.display = "none";
 });
 
-
+let handlekurv = [];
 
