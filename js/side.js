@@ -25,30 +25,10 @@ for (let produkt of produkter){
     `;
 };
 
+let handlekurv = [];
+
 let total = 0;
-function visHandlekurv(){
-    
-    const liste = document.getElementById("kurvliste");
 
-   
-    
-    if (handlekurv.length = 0){
-       liste.innerHTML="<p>Tomt</p>";
-        
-    }
-    else {
-    for (let produkt of handlekurv){
-        liste.innerHTML +=`
-        <p>
-        ${produkt.navn},
-        -,
-        ${produkt.pris} kr </p>`; 
-        total = total + produkt.pris;
-    }};
-
-    console.log(total);
-  
-};
 document.querySelectorAll(".kjopKnapp").forEach(knapp =>{
 
     knapp.addEventListener("click", () => {
@@ -59,16 +39,46 @@ document.querySelectorAll(".kjopKnapp").forEach(knapp =>{
             
              produkt => produkt.id === id);
         handlekurv.push(valgtProdukt);
-        oppdaterAntall();
+       
         console.log("Du valgte:", valgtProdukt.navn+"!");
         console.log(valgtProdukt.pris);
         
            console.log("Produkt-id", valgtProdukt.id);
 
 
-        console.log("Knappen ble trykket");
+        console.log("Knappen ble trykket"); 
+        oppdaterAntall();
+        console.log(handlekurv);
+        
     });
     });
+    
+function visHandlekurv(){
+    
+    const liste = document.getElementById("kurvliste");
+
+   liste.innerHTML= "";
+    
+    if (handlekurv.length = 0){
+       liste.innerHTML="<p>Tomt</p>";
+        
+    }
+    else {
+    for (let objekt of handlekurv){
+        liste.innerHTML +=`
+        <p>
+        ${objekt.navn},
+        -,
+        ${objekt.pris} kr </p>`; 
+        total = (total + objekt.pris);
+        
+        
+    }};
+
+    console.log(total);
+  
+};
+
 kurvPopup.addEventListener("click", (event) => {
     if (event.target === kurvPopup){
         kurvPopup.style.display = "none";
@@ -82,6 +92,7 @@ kurvKnapp.addEventListener("click", () => {
 
     visHandlekurv();
 
+
     kurvPopup.style.display = "flex";
 
 });
@@ -89,5 +100,5 @@ lukkKurv.addEventListener("click", () => {
     kurvPopup.style.display = "none";
 });
 
-let handlekurv = [];
+
 
