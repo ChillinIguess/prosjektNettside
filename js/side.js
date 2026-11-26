@@ -1,8 +1,11 @@
+// side.js
+
 const knapper = document.querySelectorAll(".kjopKnapp");
 const container = document.getElementById("produktContainer");
 const kurvPopup = document.getElementById("kurvPopup");
 const kurvKnapp = document.getElementById("kurvKnapp");
 const lukkKurv = document.getElementById("lukkKurv");
+const fjern = document.getElementsById("fjern");
 
 function oppdaterAntall() {
     document.getElementById("antallKurv").textContent =
@@ -23,7 +26,7 @@ for (let produkt of produkter){
  
    </div>
     `;
-};
+}; 
 
 let handlekurv = [];
 
@@ -49,6 +52,8 @@ document.querySelectorAll(".kjopKnapp").forEach(knapp =>{
         console.log("Knappen ble trykket"); 
         oppdaterAntall();
         console.log(handlekurv);
+      
+        
         
     });
     });
@@ -59,29 +64,35 @@ function visHandlekurv(){
 
    liste.innerHTML= "";
     
-    if (handlekurv.length = 0){
+    if (handlekurv.length === 0){
        liste.innerHTML="<p>Tomt</p>";
-        
+     
     }
     else {
     for (let objekt of handlekurv){
         liste.innerHTML +=`
         <p>
-        ${objekt.navn},
-        -,
-        ${objekt.pris} kr </p>`; 
-        total = (total + objekt.pris);
+        ${objekt.navn}
+        -
+        ${objekt.pris} kr </p>
+        `; 
+        total =  objekt.pris + total;
         
+    
+     
         
-    }};
+    };
+liste.innerHTML +=`<p>Total sum: ${total} kr</p>`};
 
-    console.log(total);
+    
   
 };
 
 kurvPopup.addEventListener("click", (event) => {
     if (event.target === kurvPopup){
         kurvPopup.style.display = "none";
+        
+        total = 0;
     }
 });
 function oppdaterAntall(){
@@ -94,10 +105,12 @@ kurvKnapp.addEventListener("click", () => {
 
 
     kurvPopup.style.display = "flex";
+   
 
 });
 lukkKurv.addEventListener("click", () => {
     kurvPopup.style.display = "none";
+    total = 0;
 });
 
 
